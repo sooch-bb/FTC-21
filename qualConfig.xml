@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<Robot type="FirstInspires-FTC">
+    <LynxUsbDevice name="Expansion Hub Portal 1" serialNumber="DQ2E8FP6" parentModuleAddress="2">
+        <LynxModule name="Expansion Hub 2" port="2">
+            <TetrixMotor name="frontRightWheel" port="0" />
+            <TetrixMotor name="frontLeftWheel" port="1" />
+            <TetrixMotor name="backRightWheel" port="2" />
+            <TetrixMotor name="backLeftWheel" port="3" />
+            <LynxEmbeddedIMU name="imu" port="0" bus="0" />
+        </LynxModule>
+    </LynxUsbDevice>
+</Robot>

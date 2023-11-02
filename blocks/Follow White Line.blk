@@ -1,0 +1,332 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+<variables>
+<variable type="" id="?%-}b8^K#*dk.jPmOYT%">StartTime</variable>
+</variables>
+<block type="procedures_defnoreturn" id="|N!(gODny~~PiZyGYQUh" deletable="false" editable="false" x="-458" y="-245">
+<field name="NAME">runOpMode</field>
+<comment pinned="false" h="80" w="160">This function is executed when this Op Mode is selected from the Driver Station.</comment>
+<statement name="STACK">
+<block type="comment" id="Q{0j)R}Y3!=(Z9iswz4u">
+<field name="COMMENT">This op mode demonstrates a simple way of </field>
+<next>
+<block type="comment" id="TC8{Sqi[DS;[1FAv0:PU">
+<field name="COMMENT">autonomously following a line.</field>
+<next>
+<block type="comment" id="P3EfEq[EAz{_TE`;$rk]">
+<field name="COMMENT">The op mode assumes you have</field>
+<next>
+<block type="comment" id="_S`c:+jjKL+IiIk%YeF4">
+<field name="COMMENT">(1) Connected a REV Color Distance to an </field>
+<next>
+<block type="comment" id=".].0^Nsk7U4`riEHj;]S">
+<field name="COMMENT">       I2C port on the REV Expansion Hub.</field>
+<next>
+<block type="comment" id="D3q$Y29idI2G!B!dvZ{-">
+<field name="COMMENT">(2) Set up a config file with the Color Distance</field>
+<next>
+<block type="comment" id="b}9[D$mkQ6=Xx|dnhPTx">
+<field name="COMMENT">      sensor assigned to an I2C port as "</field>
+<next>
+<block type="comment" id="^VP.?]h,_5$WzfktSgV|">
+<field name="COMMENT">      "sensor_color_distance".</field>
+<next>
+<block type="comment" id="-hsg]J#Qa#rP%y)dMQ`d">
+<field name="COMMENT">Reverse the direction of one motor so robot</field>
+<next>
+<block type="comment" id="MZ}CPEEZ$;S,^,w~@,6d">
+<field name="COMMENT">drives forward instead of in circles.</field>
+<next>
+<block type="dcMotor_setProperty_Direction" id="AS:Ph)woE+]xyA3s[=nS">
+<field name="IDENTIFIER">motor1</field>
+<field name="PROP">Direction</field>
+<value name="VALUE">
+<shadow type="dcMotor_typedEnum_direction" id="|Qpwg(t1{u)jC:*fe/}-">
+<field name="DIRECTION">REVERSE</field>
+</shadow>
+</value>
+<next>
+<block type="comment" id="vR`LCnKTVl0ZwW4y@U/u">
+<field name="COMMENT">Wait until Start is pressed on the Driver Station.</field>
+<next>
+<block type="linearOpMode_waitForStart" id="Fu=[kqALs7`7fc^kj[Lm">
+<next>
+<block type="comment" id="A0w?aiP/Ojp[(w{P=vgk">
+<field name="COMMENT">Set the motor powers to 10%</field>
+<next>
+<block type="dcMotor_setDualProperty_Number" id="99VY]^lfqG=[tG*jfqTW">
+<field name="PROP">Power</field>
+<field name="IDENTIFIER1">motor1</field>
+<field name="IDENTIFIER2">motor2</field>
+<value name="VALUE1">
+<shadow type="math_number" id="?UKNGW[O{0Xuk`/%6N_^">
+<field name="NUM">0.1</field>
+</shadow>
+</value>
+<value name="VALUE2">
+<shadow type="math_number" id="d:hSvxzTNnR?$SgTy2O4">
+<field name="NUM">0.1</field>
+</shadow>
+</value>
+<next>
+<block type="comment" id="Q3M?~*4Nn5+}Hb8#eB50">
+<field name="COMMENT">Save run time so we can calculate elapsed time.</field>
+<next>
+<block type="variables_set" id=";@Q?(v{Q{)tH+#`CE_Ub">
+<field name="VAR" id="?%-}b8^K#*dk.jPmOYT%" variabletype="">StartTime</field>
+<value name="VALUE">
+<block type="linearOpMode_getRuntime_Number" id="D6+r8*Y#auhr]kL}@38A">
+</block>
+</value>
+<next>
+<block type="comment" id="4/II~ag}2SDix%G_xpME">
+<field name="COMMENT">Loop while Stop hasn't been pressed  </field>
+<next>
+<block type="comment" id="+#F6wYrky%1[7~}Q47MJ">
+<field name="COMMENT">and less than 3 seconds have elapsed.</field>
+<next>
+<block type="controls_whileUntil" id="FXK[5|;?$Ug8F?khMbja">
+<field name="MODE">WHILE</field>
+<value name="BOOL">
+<block type="logic_operation" id="7@046~N_sKvzXc=7(H0w">
+<field name="OP">AND</field>
+<value name="A">
+<block type="linearOpMode_opModeIsActive" id="{dW[o!4cwh2X9|:su5-:">
+</block>
+</value>
+<value name="B">
+<block type="logic_compare" id="I2n[|S^AC/p*`jk5m+t8">
+<field name="OP">LT</field>
+<value name="A">
+<block type="math_arithmetic" id="?J{,dj1dR)VHwE5bfsxi">
+<field name="OP">MINUS</field>
+<value name="A">
+<shadow type="math_number" id="imF*touUzdv7+V1m@32e">
+<field name="NUM">1</field>
+</shadow>
+<block type="linearOpMode_getRuntime_Number" id="v^f@6fLWliV3RI9wC:yl">
+</block>
+</value>
+<value name="B">
+<shadow type="math_number" id="miMNb`Wnh%|JEj}BepVM">
+<field name="NUM">1</field>
+</shadow>
+<block type="variables_get" id="{vr;j0joh=9mY0wDt$lL">
+<field name="VAR" id="?%-}b8^K#*dk.jPmOYT%" variabletype="">StartTime</field>
+</block>
+</value>
+</block>
+</value>
+<value name="B">
+<block type="math_number" id="nuJ#3U9`3MVid29]3~4W">
+<field name="NUM">3</field>
+</block>
+</value>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO">
+<block type="telemetry_addNumericData_Number" id="%4B5|u)M:}C_@_=[YZX!">
+<value name="KEY">
+<shadow type="text" id="zCdb,7ChC}r4*ns2_w#c">
+<field name="TEXT">Light Detected</field>
+</shadow>
+</value>
+<value name="NUMBER">
+<shadow type="math_number" id="p/O_,34I[~YZ]t3fDl7b">
+<field name="NUM">123</field>
+</shadow>
+<block type="lynxI2cColorRangeSensor_getProperty_Number" id="1?m6!+V:be)ms56K_Y,Z">
+<field name="IDENTIFIER">sensor_color_distanceasLynxI2cColorRangeSensor</field>
+<field name="PROP">LightDetected</field>
+</block>
+</value>
+<next>
+<block type="comment" id="i}=Q8,-oiIFwTMaWyfUu">
+<field name="COMMENT">Is light detected less than threshold?</field>
+<next>
+<block type="comment" id="E)K//?XCX|N6].=+8VqF">
+<field name="COMMENT">Threshold</field>
+<next>
+<block type="comment" id="xCEwT(IRApM5quHl=.n@">
+<field name="COMMENT">   = (Value for line + Value for background) / 2 </field>
+<next>
+<block type="controls_if" id="FeXxF)5{|492nc{ga%mA">
+<mutation else="1">
+</mutation>
+<value name="IF0">
+<block type="logic_compare" id="]]DDQtQEPyu);M98lY-3">
+<field name="OP">LT</field>
+<value name="A">
+<block type="lynxI2cColorRangeSensor_getProperty_Number" id="$XRfi2fUOxHr.d.+PbXw">
+<field name="IDENTIFIER">sensor_color_distanceasLynxI2cColorRangeSensor</field>
+<field name="PROP">LightDetected</field>
+</block>
+</value>
+<value name="B">
+<block type="math_number" id="30LJz;9F^x+zc/:$$xz]">
+<field name="NUM">0.85</field>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block type="comment" id="XY(cX~bhsV8xOINCWDap">
+<field name="COMMENT">If so, turn left.</field>
+<next>
+<block type="dcMotor_setDualProperty_Number" id=".kJ/.WaZNqLDs8OX`=/^">
+<field name="PROP">Power</field>
+<field name="IDENTIFIER1">motor1</field>
+<field name="IDENTIFIER2">motor2</field>
+<value name="VALUE1">
+<shadow type="math_number" id="~aLoQ45VcqM-R%Fxbf1S">
+<field name="NUM">0.05</field>
+</shadow>
+</value>
+<value name="VALUE2">
+<shadow type="math_number" id="-SYHjIWxhgcaK6^k,NwF">
+<field name="NUM">0.15</field>
+</shadow>
+</value>
+<next>
+<block type="telemetry_addTextData_All" id="k,#mhz[XM+SWHLJ=jJ*$">
+<value name="KEY">
+<shadow type="text" id="3@#]BA?8f=@Fy12,ZKRI">
+<field name="TEXT">Decision</field>
+</shadow>
+</value>
+<value name="TEXT">
+<shadow type="text" id="e4i]or7sC|%UcYG{.xW+">
+<field name="TEXT">Turn left</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+<statement name="ELSE">
+<block type="comment" id="JNBvUt.`7D;9JNGHI]mt">
+<field name="COMMENT">If not turn right.</field>
+<next>
+<block type="dcMotor_setDualProperty_Number" id=".6Q}/TFyMj$%HxjX*G+D">
+<field name="PROP">Power</field>
+<field name="IDENTIFIER1">motor1</field>
+<field name="IDENTIFIER2">motor2</field>
+<value name="VALUE1">
+<shadow type="math_number" id="Dpu+vphd.XT9~RwaM*Iq">
+<field name="NUM">0.15</field>
+</shadow>
+</value>
+<value name="VALUE2">
+<shadow type="math_number" id="WY=9N=-j/GVFwibGpJs!">
+<field name="NUM">0.05</field>
+</shadow>
+</value>
+<next>
+<block type="telemetry_addTextData_All" id="tV,%grkP{[tBuFTqD8EO">
+<value name="KEY">
+<shadow type="text" id="2m]X69OSK|O?ZAZ1U3j]">
+<field name="TEXT">Decision</field>
+</shadow>
+</value>
+<value name="TEXT">
+<shadow type="text" id="}r{C;H8QCfQI]-dC02gD">
+<field name="TEXT">Turn right</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+<next>
+<block type="comment" id="H@!2`6!AQ~ZNg{-KV;Bg">
+<field name="COMMENT">Transmit telemetry to Driver Station</field>
+<next>
+<block type="telemetry_update" id="EQ?j,!vD!.^#QV[qf|qd">
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+<next>
+<block type="comment" id="O=F~,5Kph@%R54.e6DD0">
+<field name="COMMENT">We're done; turn off motors.</field>
+<next>
+<block type="dcMotor_setDualProperty_Number" id="^$k--|F+qGtlzXfd!,=3">
+<field name="PROP">Power</field>
+<field name="IDENTIFIER1">motor1</field>
+<field name="IDENTIFIER2">motor2</field>
+<value name="VALUE1">
+<shadow type="math_number" id="i?v~x`F/[}$GGJ@Kw)?w">
+<field name="NUM">0</field>
+</shadow>
+</value>
+<value name="VALUE2">
+<shadow type="math_number" id="!_o#Gy6s.;4.Vt$QOBHJ">
+<field name="NUM">0</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+</block>
+</xml>
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<Extra>
+<OpModeMeta flavor="AUTONOMOUS" group="" />
+<Enabled value="true" />
+</Extra>
